@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Facescreen Recorder Studio</title>
+  <link rel="stylesheet" href="studio.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <a class="brand" href="#" aria-label="Facescreen Recorder home"><span class="brand-mark">F</span><span><strong>Facescreen Recorder</strong><small>Recorder Studio</small></span></a>
+      <div class="header-status"><span id="statusDot" class="status-dot"></span><span id="statusText" aria-live="polite">Ready to capture</span><span class="privacy-pill">Local only</span><button id="detachStudioBtn" class="window-mode-btn" type="button">Detach studio</button></div>
+    </header>
+
+    <main>
+      <section class="workspace">
+        <div class="workspace-heading"><div><span class="eyebrow">Capture workspace</span><h1>Make every recording count.</h1></div><div id="timer" class="timer" aria-label="Recording duration">00:00</div></div>
+
+        <div class="mode-switch" role="radiogroup" aria-label="Recording mode">
+          <button class="mode active" data-mode="screen" role="radio" aria-checked="true"><span class="mode-icon">▣</span><span><strong>Screen</strong><small>Tab, window, or display</small></span></button>
+          <button class="mode" data-mode="camera" role="radio" aria-checked="false"><span class="mode-icon">●</span><span><strong>Camera</strong><small>Webcam only</small></span></button>
+          <button class="mode" data-mode="pip" role="radio" aria-checked="false"><span class="mode-icon">◩</span><span><strong>Screen + camera</strong><small>Camera baked into video</small></span></button>
+        </div>
+
+        <div id="previewCard" class="preview-card idle">
+          <canvas id="previewCanvas" width="1280" height="720"></canvas>
+          <video id="screenVideo" playsinline muted hidden></video>
+          <video id="cameraVideo" playsinline muted hidden></video>
+          <div id="emptyPreview" class="empty-preview"><span class="empty-icon">◫</span><strong>Your preview appears here</strong><p>Chrome will ask which tab, window, or screen you want to share.</p></div>
+          <div id="countdown" class="countdown" hidden>3</div>
+          <div id="recordBadge" class="record-badge" hidden><span></span> REC</div>
+          <div id="cameraQuickBar" class="camera-quick-bar" hidden><button id="quickCameraBtn" type="button" aria-pressed="true">Camera on</button><button id="quickMicBtn" type="button" aria-pressed="true">Mic on</button><button id="quickMirrorBtn" type="button" aria-pressed="false">Mirror off</button><button id="quickShapeBtn" type="button">Change shape</button></div>
+          <div id="cameraCoach" class="camera-coach" hidden><strong>Your camera is part of the recording</strong><p>Drag the camera inside the preview to place it anywhere. “Open floating camera” creates a separate always-on-top personal preview.</p><button id="dismissCameraCoach" type="button">Got it</button></div>
+        </div>
+
+        <div class="session-bar">
+          <div><span class="session-label">Session</span><strong id="sessionState">Not started</strong></div>
+          <div class="session-actions">
+            <button id="previewCameraBtn" class="btn secondary" type="button">Preview camera</button>
+            <button id="snapshotBtn" class="btn secondary" type="button" disabled>Capture snapshot</button>
+            <button id="floatCameraBtn" class="btn secondary" type="button" hidden>Open floating camera</button>
+            <button id="startBtn" class="btn primary" type="button"><span>●</span> Start recording</button>
+            <button id="pauseBtn" class="btn secondary" type="button" hidden>Pause</button>
+            <button id="stopBtn" class="btn danger" type="button" hidden><span>■</span> Stop</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="control-panel">
+        <div class="panel-heading"><div><span class="eyebrow">Setup</span><h2>Recording controls</h2></div><button id="resetBtn" class="text-button" type="button">Reset</button></div>
+
+        <section class="control-section">
+          <h3>Sources</h3>
+          <label id="cameraField" class="field conditional"><span>Camera</span><select id="cameraSelect"><option value="">Default camera</option></select></label>
+          <div id="cameraReadiness" class="camera-readiness"><div><span>Camera</span><strong id="cameraReadyState">Not checked</strong></div><div><span>Microphone</span><strong id="micReadyState">Not checked</strong></div><div><span>Lighting</span><strong id="lightingState">Not checked</strong></div><div><span>Framing</span><strong id="framingState">Use live preview</strong></div></div>
+          <label class="field toggle-row"><span><strong>Microphone</strong><small>Include your voice</small></span><input id="micEnabled" type="checkbox" checked></label>
+          <label id="micField" class="field"><span>Input device</span><select id="micSelect"><option value="">Default microphone</option></select></label>
+          <div id="micMeterRow" class="audio-meter-row"><span>Input level</span><div class="audio-meter"><span id="micMeter"></span></div><small id="micMeterStatus">Not connected</small></div>
+          <div class="source-audio-status"><span id="systemAudioDot"></span><span id="systemAudioStatus">Shared audio is checked after source selection</span></div>
+        </section>
+
+        <section id="pipSection" class="control-section conditional" hidden>
+          <h3>Camera overlay</h3>
+          <label class="field toggle-row"><span><strong>Include camera overlay</strong><small>Bake webcam into the recording</small></span><input id="pipEnabled" type="checkbox" checked></label>
+          <label class="field toggle-row"><span><strong>Mirror camera in recording</strong><small>Useful for presenter-style video</small></span><input id="mirrorCamera" type="checkbox"></label>
+          <div id="pipControls">
+          <div class="two-col"><label class="field"><span>Shape</span><select id="pipShape"><option value="circle">Circle</option><option value="rounded">Rounded</option><option value="square">Square</option></select></label><label class="field"><span>Position</span><select id="pipPosition"><option value="br">Bottom right</option><option value="bl">Bottom left</option><option value="tr">Top right</option><option value="tl">Top left</option><option value="custom" disabled>Custom placement</option></select></label></div>
+          <label class="field range-field"><span>Overlay size <output id="pipSizeValue">25%</output></span><input id="pipSize" type="range" min="15" max="50" value="25"></label>
+          </div>
+        </section>
+
+        <section class="control-section">
+          <h3>Quality</h3>
+          <label class="field"><span>Preset</span><select id="qualityPreset"><option value="custom">Custom</option><option value="720-30-4">Standard · 720p / 30 fps</option><option value="1080-30-8" selected>High · 1080p / 30 fps</option><option value="1080-60-12">Smooth · 1080p / 60 fps</option><option value="1440-30-16">QHD · 1440p / 30 fps</option><option value="2160-30-20">Ultra · 4K / 30 fps</option></select></label>
+          <div class="three-col"><label class="field"><span>Resolution</span><select id="resolutionSelect"><option value="480">640×480</option><option value="720">1280×720</option><option value="1080" selected>1920×1080</option><option value="1440">2560×1440</option><option value="2160">3840×2160</option></select></label><label class="field"><span>FPS</span><select id="fpsSelect"><option value="24">24</option><option value="30" selected>30</option><option value="60">60</option></select></label><label class="field"><span>Bitrate</span><select id="bitrateSelect"><option value="4">4 Mbps</option><option value="6">6 Mbps</option><option value="8" selected>8 Mbps</option><option value="10">10 Mbps</option><option value="15">15 Mbps</option><option value="20">20 Mbps</option></select></label></div>
+          <details>
+            <summary>Advanced options</summary>
+            <label class="field toggle-row"><span><strong>Live preview</strong><small>May use more resources</small></span><input id="previewEnabled" type="checkbox" checked></label>
+            <label class="field toggle-row"><span><strong>Prefer GPU compositing</strong><small>Use browser acceleration when available</small></span><input id="hardwareAcceleration" type="checkbox" checked></label>
+            <label class="field"><span>Performance profile</span><select id="performanceProfile"><option value="auto" selected>Auto · adapt to this computer</option><option value="economy">Economy · lowest resource use</option><option value="balanced">Balanced · up to 1080p / 30</option><option value="quality">Quality · use selected settings</option></select></label>
+            <div class="performance-status"><span id="performanceStatusDot"></span><div><strong id="performanceStatus">Detecting device capacity…</strong><small id="performanceDetails"></small></div></div>
+            <div class="hardware-status"><span id="hardwareStatusDot"></span><div><strong id="hardwareStatus">Checking graphics support…</strong><small id="hardwareDetails">Chrome controls the final video encoder.</small></div></div>
+            <p class="technical-note">Facescreen Recorder can prefer accelerated canvas composition, but Chrome and the operating system decide whether video encoding runs on hardware. Protected content may appear blank.</p>
+          </details>
+        </section>
+
+        <div class="privacy-card"><span>✓</span><div><strong>Private by design</strong><p>Recording is processed in this tab and downloaded directly. Nothing is uploaded.</p></div></div>
+        <section class="recent-section"><div class="recent-heading"><h3>Recent recordings</h3><button id="clearHistoryBtn" class="text-button" type="button">Clear</button></div><div id="recentList" class="recent-list"><p>No recordings yet.</p></div></section>
+      </aside>
+    </main>
+
+    <section id="resultPanel" class="result-panel" hidden>
+      <div><span class="result-icon">✓</span><span><strong id="resultTitle">Recording saved</strong><small id="resultMeta"></small></span></div>
+      <div><button id="downloadAgainBtn" class="btn secondary" type="button">Download again</button><button id="dismissResultBtn" class="text-button" type="button">Dismiss</button></div>
+    </section>
+  </div>
+  <script src="studio.js"></script>
+</body>
+</html>
