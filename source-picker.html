@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Choose what to record</title>
+  <link rel="stylesheet" href="source-picker.css">
+</head>
+<body>
+  <!--
+  THESIS: Source choice should feel immediate and trustworthy, never like a system dialog with hidden consequences.
+  OWN-WORLD: Charcoal recording surface, warm white controls, coral action, and clear green readiness states.
+  STORY: Pick one screen or window, confirm audio, then start with the floating webcam automatically.
+  FIRST VIEWPORT: Draggable title, three source tabs, large visual source grid, and a persistent action footer.
+  FORM: Focused extension of the established FaceScreen utility surface; seed key not required for this local addition.
+  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+  -->
+  <header class="titlebar">
+    <div><span class="live-dot"></span><strong>Choose what to record</strong></div>
+    <button id="close" class="icon-button" aria-label="Cancel source selection">×</button>
+  </header>
+  <main>
+    <div class="heading-row">
+      <div><h1>Select a source</h1><p>FaceScreen records one source at a time for smoother performance.</p></div>
+      <button id="refresh" class="secondary">Refresh</button>
+    </div>
+    <nav class="tabs" aria-label="Source type">
+      <button class="tab active" data-kind="screen" aria-selected="true">Screens <span id="screenCount">0</span></button>
+      <button class="tab" data-kind="window" aria-selected="false">Windows <span id="windowCount">0</span></button>
+      <button class="tab" data-kind="tab" aria-selected="false">Browser tabs <span class="extension-badge">Extension</span></button>
+    </nav>
+    <section id="sourceGrid" class="source-grid" aria-live="polite" aria-busy="true"></section>
+    <section id="tabsHelp" class="tabs-help" hidden>
+      <h2>Record an individual browser tab</h2>
+      <p>Chrome tab capture is provided by the FaceScreen Chrome extension. In this desktop app, choose the Chrome window from <strong>Windows</strong>, or start tab recording from the extension.</p>
+      <button id="showWindows" class="secondary">Choose a Chrome window</button>
+    </section>
+  </main>
+  <footer>
+    <label class="audio-option"><input id="includeAudio" type="checkbox" checked><span><strong>Include system audio</strong><small>Capture sound playing on this computer</small></span></label>
+    <div class="actions"><button id="cancel" class="secondary">Cancel</button><button id="start" class="primary" disabled>Start recording</button></div>
+  </footer>
+  <script src="source-picker.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+:root { color-scheme: dark; font-family: "Segoe UI", Arial, sans-serif; }
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: transparent; }
+.webcam-shell { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 50%; background: #090909; box-shadow: inset 0 0 0 2px rgba(255,255,255,.18); }
+.webcam-shell.rounded { border-radius: 14%; }
+.webcam-shell.square { border-radius: 0; }
+#webcamVideo { display: block; width: 100%; height: 100%; object-fit: cover; }
+#webcamVideo.mirror { transform: scaleX(-1); }
+.window-drag { position: absolute; inset: 0; -webkit-app-region: drag; }
+.webcam-controls { position: absolute; z-index: 3; left: 50%; bottom: 14px; display: flex; gap: 6px; padding: 6px; border-radius: 999px; background: rgba(10,10,10,.78); opacity: 0; transform: translate(-50%, 8px); transition: opacity 160ms ease, transform 180ms cubic-bezier(.2,.8,.2,1); -webkit-app-region: no-drag; }
+.webcam-shell:hover .webcam-controls, .webcam-controls:focus-within { opacity: 1; transform: translate(-50%, 0); }
+.webcam-controls button { display: grid; width: 44px; height: 44px; place-items: center; border: 0; border-radius: 50%; background: transparent; color: #fff; -webkit-app-region: no-drag; }
+.webcam-controls button:hover { background: rgba(255,255,255,.14); }
+.webcam-controls button[aria-pressed="false"] { color: #ff8176; background: rgba(233,75,60,.16); }
+.webcam-controls button:last-child:hover { background: #e94b3c; color: #fff; }
+.webcam-controls svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.webcam-controls button:focus-visible { outline: 3px solid #fff3e8; outline-offset: 2px; }
+.webcam-state { position: absolute; inset: 0; display: grid; place-content: center; gap: 5px; padding: 28px; color: #fff; text-align: center; background: #111; }
+.webcam-state strong { font-size: 14px; }
+.webcam-state span { color: #c7c4be; font-size: 11px; }
+.webcam-state[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { .webcam-controls { transition: none; } }
+
+
+/* Compact floating camera */
+.webcam-shell{box-shadow:none}
+.webcam-shell::after{content:"";position:absolute;z-index:4;inset:1px;border:2px solid rgba(255,255,255,.28);border-radius:inherit;pointer-events:none;transition:border-color 180ms ease,box-shadow 180ms ease}
+.webcam-shell.recording::after{border-color:#e94b3c;box-shadow:inset 0 0 0 1px rgba(233,75,60,.18);animation:recording-ring 1.6s ease-in-out infinite}
+.webcam-controls{bottom:10px;display:grid;grid-template-columns:repeat(2,44px);gap:3px;padding:4px;border-radius:16px}
+.webcam-shell:not(:hover) .webcam-controls:not(:focus-within){pointer-events:none}
+.webcam-controls button{width:44px;height:44px}
+@keyframes recording-ring{50%{border-color:#ff7b70}}
+@media(min-width:220px){.webcam-controls{display:flex;bottom:12px;gap:4px;border-radius:999px}}
+@media(prefers-reduced-motion:reduce){.webcam-shell.recording::after{animation:none}}
+
+
+/* Direct radial resizing */
+.webcam-resize-grip{position:absolute;z-index:7;right:0;bottom:0;width:44px;height:44px;padding:0;border:0;background:transparent;color:#fff;cursor:nwse-resize;-webkit-app-region:no-drag;opacity:0;transition:opacity 150ms ease}
+.webcam-resize-grip span{position:absolute;right:8px;bottom:8px;width:12px;height:12px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;border-radius:0 0 7px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.7))}
+.webcam-shell:hover .webcam-resize-grip,.webcam-resize-grip:focus-visible,.webcam-shell.resizing .webcam-resize-grip{opacity:.9}
+.webcam-resize-grip:focus-visible{outline:3px solid #fff3e8;outline-offset:-5px;border-radius:50%}
+.webcam-size-label{position:absolute;z-index:8;left:50%;top:50%;min-width:58px;padding:6px 9px;border-radius:999px;background:rgba(10,10,10,.82);color:#fff;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;text-align:center;opacity:0;transform:translate(-50%,-50%) scale(.94);transition:opacity 140ms ease,transform 180ms cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.webcam-shell.resizing .webcam-size-label{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.webcam-shell.resizing .webcam-controls{opacity:0;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.webcam-resize-grip,.webcam-size-label{transition:none}}

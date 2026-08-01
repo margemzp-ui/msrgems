@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FaceScreen Webcam</title>
+  <link rel="stylesheet" href="webcam.css">
+</head>
+<body>
+  <main id="webcamShell" class="webcam-shell" aria-label="Floating webcam">
+    <video id="webcamVideo" autoplay muted playsinline></video>
+    <div id="webcamState" class="webcam-state"><strong>Starting webcam</strong><span>Please allow camera access</span></div>
+    <div class="window-drag" aria-hidden="true"></div>
+    <output id="webcamSizeLabel" class="webcam-size-label" aria-live="polite">180px</output>
+    <button id="webcamResizeGrip" class="webcam-resize-grip" type="button" aria-label="Resize floating camera. Use arrow keys when focused." title="Drag to resize"><span aria-hidden="true"></span></button>
+    <div class="webcam-controls" aria-label="Webcam controls"><button id="toggleWebcamCamera" type="button" aria-label="Turn camera off" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 10l4.5-2.5v9L15 14M4 7h10a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Z"/></svg></button><button id="toggleWebcamMic" type="button" aria-label="Mute microphone" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="4" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v3M9 20h6"/></svg></button><button id="toggleWebcamMirror" type="button" aria-label="Mirror webcam" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 7l-3 5 3 5M19 7l3 5-3 5M3 12h6M15 12h6"/></svg></button><button id="closeWebcam" type="button" aria-label="Close webcam"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+  </main>
+  <script src="webcam.js"></script>
+</body>
+</html>

@@ -6,7 +6,7 @@ var STUDIO_URL = chrome.runtime.getURL('studio.html');
 
 async function savedStudioBounds() {
   var result = await chrome.storage.local.get('studioWindowBounds'); var b = result.studioWindowBounds || {};
-  return { width: Math.max(760, Number(b.width) || 1240), height: Math.max(640, Number(b.height) || 840), left: Number.isFinite(b.left) ? b.left : undefined, top: Number.isFinite(b.top) ? b.top : undefined };
+  return { width: Math.min(480, Math.max(360, Number(b.width) || 420)), height: Math.min(560, Math.max(520, Number(b.height) || 540)), left: Number.isFinite(b.left) ? b.left : undefined, top: Number.isFinite(b.top) ? b.top : undefined };
 }
 
 async function findStudioTab() {
