@@ -1,39 +1,38 @@
-(function () {
-  'use strict';
+﻿(function () {
+  var header = document.querySelector('.site-header');
+  var menu = document.querySelector('.menu-button');
+  var journey = document.querySelector('.journey');
+  var steps = Array.from(document.querySelectorAll('.journey-step'));
+  var labels = ['Choose your source', 'Control the session', 'Keep the recording'];
+  var count = document.getElementById('journeyCount');
+  var label = document.getElementById('journeyLabel');
 
-  var menuButton = document.querySelector('.menu-button');
-  var nav = document.getElementById('site-nav');
-
-  if (menuButton && nav) {
-    menuButton.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', String(open));
-      menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+  function selectStep(index) {
+    steps.forEach(function (step, stepIndex) {
+      var active = stepIndex === index;
+      step.classList.toggle('is-active', active);
+      step.querySelector('button').setAttribute('aria-expanded', String(active));
     });
-    nav.addEventListener('click', function (event) {
-      if (event.target.tagName === 'A') {
-        nav.classList.remove('open');
-        menuButton.setAttribute('aria-expanded', 'false');
-      }
-    });
+    journey.dataset.active = String(index + 1);
+    count.textContent = (index + 1) + ' / ' + steps.length;
+    label.textContent = labels[index];
   }
 
-  var year = document.getElementById('year');
-  if (year) year.textContent = String(new Date().getFullYear());
+  steps.forEach(function (step, index) {
+    step.querySelector('button').addEventListener('click', function () { selectStep(index); });
+  });
 
-  var items = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)) {
-    items.forEach(function (item) { item.classList.add('visible'); });
-    return;
-  }
+  menu.addEventListener('click', function () {
+    var open = !header.classList.contains('menu-open');
+    header.classList.toggle('menu-open', open);
+    menu.setAttribute('aria-expanded', String(open));
+    menu.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
 
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
+  document.querySelectorAll('.site-nav a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      header.classList.remove('menu-open');
+      menu.setAttribute('aria-expanded', 'false');
     });
-  }, { threshold: 0.12 });
-  items.forEach(function (item) { observer.observe(item); });
-}());
+  });
+})();

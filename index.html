@@ -1,148 +1,102 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Facescreen Recorder is a private Chrome screen and camera recorder. Capture your screen, webcam, and picture-in-picture locally—no uploads required.">
-  <meta name="theme-color" content="#070b13">
-  <meta property="og:title" content="Facescreen Recorder — Record clearly. Stay private.">
-  <meta property="og:description" content="Private screen, camera, and picture-in-picture recording for Chrome.">
-  <title>Facescreen Recorder — Private screen recording for Chrome</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="FaceScreen is a compact Windows screen and webcam recorder that keeps recordings local and controls out of your way.">
+  <meta name="theme-color" content="#201f1e">
+  <title>FaceScreen — Record clearly. Stay in the moment.</title>
   <link rel="stylesheet" href="landing.css">
-  <script src="landing.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="logo" href="#top" aria-label="Facescreen Recorder home">
-      <span class="logo-mark">F</span>
-      <span>Facescreen <b>Recorder</b></span>
-    </a>
-    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span></button>
-    <nav id="site-nav" aria-label="Main navigation">
-      <a href="#features">Features</a>
-      <a href="#privacy">Privacy</a>
-      <a href="#how-it-works">How it works</a>
-      <a href="#faq">FAQ</a>
+    <a class="brand" href="#top" aria-label="FaceScreen home"><span class="brand-lens" aria-hidden="true"><span></span></span><span>FaceScreen</span></a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="#workflow">How it works</a><a href="#features">Features</a><a href="#privacy">Privacy</a>
     </nav>
-    <a class="button button-small header-cta" href="#install">Get Facescreen <span aria-hidden="true">↗</span></a>
+    <a class="nav-cta" href="https://github.com/margemzp-ui/msrgems" target="_blank" rel="noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+    <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </header>
 
-  <main id="top">
-    <section class="hero section-shell">
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-copy reveal">
-        <div class="eyebrow"><span></span> Built for Chrome. Made for privacy.</div>
-        <h1>Record clearly.<br><em>Stay private.</em></h1>
-        <p>Capture your screen, camera, or both—without sending your recordings to someone else's cloud.</p>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <h1>Record clearly.<br><span>Stay in the moment.</span></h1>
+        <p>FaceScreen puts screen, webcam, and microphone capture inside one compact desktop control—then saves everything directly to your computer.</p>
         <div class="hero-actions">
-          <a class="button" href="#install"><span class="chrome-dot" aria-hidden="true"></span> Install for Chrome <span aria-hidden="true">→</span></a>
-          <a class="text-link" href="#product-tour">See how it works <span aria-hidden="true">↓</span></a>
+          <a class="primary-button" href="https://github.com/margemzp-ui/msrgems/releases/latest">Download for Windows <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0 4-4m-4 4L6 9M4 16h12"/></svg></a>
+          <a class="text-link" href="#workflow">See how it works <span aria-hidden="true">↓</span></a>
         </div>
-        <div class="trust-row">
-          <span><i>✓</i> No account</span><span><i>✓</i> No uploads</span><span><i>✓</i> Free &amp; open source</span>
-        </div>
+        <div class="trust-line"><span><i></i> Local-first recording</span><span>Screen · Camera · Both</span></div>
       </div>
 
-      <div class="hero-product reveal" id="product-tour">
-        <div class="window-chrome">
-          <div class="traffic-lights"><i></i><i></i><i></i></div>
-          <span>Facescreen Recorder Studio</span>
-          <span class="secure-label">● Local only</span>
-        </div>
-        <div class="studio-demo">
-          <div class="demo-topbar">
-            <div class="mini-brand"><b>F</b><span>Facescreen<small>Recorder Studio</small></span></div>
-            <div class="ready"><i></i> Ready to record</div>
-          </div>
-          <div class="demo-body">
-            <div class="demo-main">
-              <div class="mode-tabs"><span class="active">▣ Screen</span><span>◉ Camera</span><span>◫ Screen + camera</span></div>
-              <div class="preview-stage">
-                <div class="screen-art">
-                  <div class="art-sidebar"></div><div class="art-content"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                </div>
-                <div class="camera-bubble"><div class="person"><i></i><span></span></div></div>
-                <span class="rec-pill"><i></i> REC &nbsp; 00:12</span>
+      <div class="hero-stage" aria-label="FaceScreen recorder interface preview">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="recorder-window">
+          <div class="window-bar"><span class="live-status"><i></i> Ready</span><span class="window-name">FaceScreen Recorder</span><span class="window-controls"><i></i><i></i></span></div>
+          <div class="recorder-body">
+            <div class="camera-well">
+              <div class="camera-preview">
+                <div class="portrait" aria-hidden="true"><span class="head"></span><span class="body"></span></div>
+                <div class="frame-corner corner-a"></div><div class="frame-corner corner-b"></div>
               </div>
-              <div class="demo-controls"><span>Session ready</span><button type="button" tabindex="-1">● Start recording</button></div>
+              <p><strong>Camera ready</strong><span>Local only · nothing uploaded</span></p>
             </div>
-            <aside class="demo-panel">
-              <strong>Recording setup</strong>
-              <label>Quality <span>1080p</span></label><div class="fake-select">Full HD <b>⌄</b></div>
-              <label>Frame rate <span>30 fps</span></label><div class="range"><i></i></div>
-              <div class="fake-toggle"><span>Microphone<small>Built-in audio</small></span><i></i></div>
-              <div class="privacy-mini"><b>✓</b><span><strong>Your recording stays here</strong><small>Everything is processed locally.</small></span></div>
-            </aside>
+            <div class="control-rail">
+              <div class="control active"><span>Record</span><button type="button" tabindex="-1"><i></i></button></div>
+              <div class="control"><span>Settings</span><button type="button" tabindex="-1"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="5" height="5"/><rect x="14" y="5" width="5" height="5"/><rect x="5" y="14" width="5" height="5"/><rect x="14" y="14" width="5" height="5"/></svg></button></div>
+              <div class="control"><span>Toolbox</span><button type="button" tabindex="-1"><svg viewBox="0 0 24 24"><path d="M5 9h14v10H5zM9 9V6h6v3M5 13h14"/></svg></button></div>
+              <div class="control"><span>Webcam</span><button type="button" tabindex="-1"><svg viewBox="0 0 24 24"><path d="M5 7h10v10H5zM15 10l4-2v8l-4-2"/></svg></button></div>
+            </div>
           </div>
+          <div class="quality-strip"><span>1080p</span><span>30 FPS</span><span>8 Mbps</span><strong>High quality</strong></div>
         </div>
-        <div class="floating-note note-one"><i>✓</i><span><b>Saved locally</b><small>Never uploaded</small></span></div>
-        <div class="floating-note note-two"><i>◉</i><span><b>Camera ready</b><small>Lighting looks good</small></span></div>
+        <div class="floating-cam"><div class="mini-portrait"><span></span></div><div class="cam-ring"></div><span class="resize-grip"></span></div>
+        <div class="stage-note"><span class="note-line"></span><p>Drag your camera.<br>Keep the work visible.</p></div>
       </div>
     </section>
 
-    <section class="proof-strip" aria-label="Product highlights">
-      <p><span>◈</span> Your recordings never leave your device</p>
-      <div><b>3</b><span>Recording modes</span></div>
-      <div><b>1080p</b><span>Full HD quality</span></div>
-      <div><b>0</b><span>Sign-ups required</span></div>
+    <section class="promise-strip" aria-label="FaceScreen principles">
+      <p>Built for the part where you need to <strong>focus on presenting</strong>, not managing the recorder.</p>
+      <div><span>01</span> One-click control <span>02</span> Native capture quality <span>03</span> Your files stay yours</div>
     </section>
 
-    <section class="features section-shell" id="features">
-      <div class="section-heading reveal">
-        <div><span class="kicker">Everything you need</span><h2>A focused recorder.<br><em>Nothing you don't.</em></h2></div>
-        <p>From a quick walkthrough to a polished presentation, Facescreen gives you the controls you need without the clutter.</p>
-      </div>
-      <div class="feature-grid">
-        <article class="feature-card large reveal"><span class="feature-number">01</span><div class="feature-icon">▣</div><h3>Capture any screen</h3><p>Record a browser tab, an application window, or your entire display with Chrome's secure source picker.</p><div class="source-picker"><small>Choose what to share</small><span class="selected">▤ <b>Chrome tab</b><i>Selected</i></span><span>▣ <b>Window</b></span><span>▦ <b>Entire screen</b></span></div></article>
-        <article class="feature-card reveal"><span class="feature-number">02</span><div class="feature-icon">◉</div><h3>Look your best</h3><p>Add a movable camera overlay, choose its shape, mirror your view, and check lighting before recording.</p><div class="camera-shapes"><i></i><i></i><i></i></div></article>
-        <article class="feature-card reveal"><span class="feature-number">03</span><div class="feature-icon">⌁</div><h3>Hear every detail</h3><p>Combine microphone and source audio, with a live level meter so you know you're being heard.</p><div class="sound-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
-        <article class="feature-card wide reveal"><span class="feature-number">04</span><div><div class="feature-icon">⚡</div><h3>Built to perform</h3><p>Adaptive performance profiles balance recording quality with your computer's available resources.</p></div><div class="performance-meter"><div><span>Auto performance</span><b>Optimized</b></div><div class="meter"><i></i></div><small>Preview load automatically adjusted</small></div></article>
-      </div>
-    </section>
-
-    <section class="privacy section-shell" id="privacy">
-      <div class="privacy-panel reveal">
-        <div class="privacy-copy"><span class="kicker">Privacy by architecture</span><h2>Your content is<br><em>yours. Period.</em></h2><p>Facescreen processes and stores recordings on your device. There are no accounts, servers, analytics trackers, or surprise uploads.</p><a class="text-link" href="https://github.com/mpdigitalsolution/facescreen" target="_blank" rel="noreferrer">Inspect the source code <span>↗</span></a></div>
-        <div class="privacy-flow" aria-label="Recording data stays on your device">
-          <div class="device-card"><span class="lock">⌾</span><strong>Your device</strong><small>Record · Process · Save</small><div class="flow-line"><i></i></div><div class="file-card">▤ <span><b>Recording.webm</b><small>Saved to Downloads</small></span><em>✓</em></div></div>
-          <div class="cloud-cross"><span>☁</span><i></i><small>No cloud</small></div>
+    <section class="workflow" id="workflow">
+      <div class="section-heading"><h2>From ready to recorded<br>without breaking your flow.</h2><p>A compact recorder should feel like an instrument: visible when you need it, quiet when you don’t.</p></div>
+      <div class="journey">
+        <article class="journey-step is-active" data-step="1"><button type="button" aria-expanded="true"><span>Choose</span><strong>Screen, camera, or both.</strong></button><p>Pick the source that fits the moment. FaceScreen keeps your microphone, quality, and camera options close without turning setup into a dashboard.</p></article>
+        <article class="journey-step" data-step="2"><button type="button" aria-expanded="false"><span>Record</span><strong>Stay present while it runs.</strong></button><p>Pause, resume, and stop from a compact widget. Float your webcam over any app and resize it directly from the frame.</p></article>
+        <article class="journey-step" data-step="3"><button type="button" aria-expanded="false"><span>Keep</span><strong>Save locally. Reuse freely.</strong></button><p>Your WebM recording downloads to your computer. Recent-session recovery helps protect work if a recording is interrupted.</p></article>
+        <div class="journey-visual" aria-live="polite">
+          <div class="journey-screen"><div class="screen-toolbar"><i></i><i></i><i></i><span>Presentation</span></div><div class="screen-content"><div class="slide-copy"><span></span><strong>Make the idea<br>easy to see.</strong><p></p><p></p></div><div class="screen-shape"></div></div><div class="screen-webcam"><div></div></div><div class="cursor-dot"></div></div>
+          <div class="journey-caption"><span id="journeyCount">1 / 3</span><strong id="journeyLabel">Choose your source</strong></div>
         </div>
       </div>
     </section>
 
-    <section class="steps section-shell" id="how-it-works">
-      <div class="center-heading reveal"><span class="kicker">Simple by design</span><h2>Ready in three steps.</h2></div>
-      <div class="step-grid">
-        <article class="reveal"><span>1</span><div class="step-art"><i class="extension-icon">F</i><b>Facescreen Recorder<small>Private browser recorder</small></b><em>Open studio</em></div><h3>Open Facescreen</h3><p>Launch the recorder from your Chrome toolbar.</p></article>
-        <article class="reveal"><span>2</span><div class="step-art choices"><i>▣<small>Screen</small></i><i>◉<small>Camera</small></i><i>◫<small>Both</small></i></div><h3>Choose your setup</h3><p>Select a mode, quality, camera, and audio source.</p></article>
-        <article class="reveal"><span>3</span><div class="step-art finish"><i></i><b>Recording complete<small>Facescreen-Recorder.webm</small></b><em>↓</em></div><h3>Record &amp; save</h3><p>Your WebM file downloads directly to your device.</p></article>
+    <section class="feature-field" id="features">
+      <div class="feature-intro"><h2>Small control.<br>Serious recording.</h2><p>The recorder gets out of the way without removing the controls that matter.</p></div>
+      <div class="feature-lines">
+        <article><span class="feature-mark"><svg viewBox="0 0 32 32"><path d="M5 7h22v18H5zM9 11h14v10H9z"/></svg></span><div><h3>Native screen quality</h3><p>Screen-only sessions preserve the native display stream instead of redrawing every frame through the preview canvas.</p></div><span class="feature-meta">Up to 4K</span></article>
+        <article><span class="feature-mark"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="10"/><path d="M22 13l5-3v12l-5-3"/></svg></span><div><h3>Camera that follows you</h3><p>Use camera-only mode or place a circular, rounded, or square webcam over your screen recording.</p></div><span class="feature-meta">Drag · resize</span></article>
+        <article><span class="feature-mark"><svg viewBox="0 0 32 32"><path d="M9 14v4a7 7 0 0 0 14 0v-4M16 25v4M11 29h10"/><rect x="12" y="4" width="8" height="16" rx="4"/></svg></span><div><h3>Screen and voice together</h3><p>Capture system audio when the selected source supports it, mix in your microphone, and monitor input before recording.</p></div><span class="feature-meta">Audio mix</span></article>
+        <article><span class="feature-mark"><svg viewBox="0 0 32 32"><path d="M16 4l10 4v7c0 7-4 11-10 13C10 26 6 22 6 15V8z"/><path d="M11 16l3 3 7-7"/></svg></span><div><h3>Local by default</h3><p>No automatic upload. Recordings, snapshots, preferences, and history remain on your device.</p></div><span class="feature-meta">Private</span></article>
       </div>
     </section>
 
-    <section class="install section-shell" id="install">
-      <div class="install-card reveal">
-        <div><span class="kicker">Download Facescreen Recorder</span><h2>Start recording<br><em>on your terms.</em></h2><p>Install the unpacked extension in Chrome today. No account, trial, or payment details required.</p><a class="button button-light" href="https://drive.google.com/file/d/1G0ljTP275j3RSYWc4CmmQMMw5EjDENEz/view?usp=sharing" target="_blank" rel="noreferrer">Download Facescreen Recorder <span>↓</span></a><small>Free &amp; open source · Chrome 116+</small></div>
-        <ol><li><span>01</span><p><b>Download the extension</b><small>Get the Facescreen Recorder package from Google Drive.</small></p></li><li><span>02</span><p><b>Open Chrome extensions</b><small>Visit chrome://extensions and enable Developer mode.</small></p></li><li><span>03</span><p><b>Load unpacked</b><small>Select the downloaded Facescreen folder.</small></p></li></ol>
-      </div>
+    <section class="privacy" id="privacy">
+      <div class="privacy-disc"><div class="disc-rings"></div><div class="disc-center"><svg viewBox="0 0 32 32"><path d="M16 4l10 4v7c0 7-4 11-10 13C10 26 6 22 6 15V8z"/><path d="M12 16l3 3 6-7"/></svg></div><span class="disc-label">LOCAL / PRIVATE / YOURS</span></div>
+      <div class="privacy-copy"><h2>Your recording doesn’t need a round trip through someone else’s server.</h2><p>FaceScreen is local-first. It records with browser media APIs, saves to your machine, and only accesses the screen, camera, and microphone sources you explicitly choose.</p><ul><li><span></span>No automatic cloud upload</li><li><span></span>No account required to record</li><li><span></span>Open-source code you can inspect</li></ul></div>
     </section>
 
-    <section class="faq section-shell" id="faq">
-      <div class="center-heading reveal"><span class="kicker">Good to know</span><h2>Frequently asked questions.</h2></div>
-      <div class="faq-list reveal">
-        <details><summary>Where are my recordings stored?<span>+</span></summary><p>Completed recordings and snapshots are saved to the Facescreen Recorder folder inside your browser's configured Downloads directory.</p></details>
-        <details><summary>Does Facescreen upload or track anything?<span>+</span></summary><p>No. Recording and processing happen locally in Chrome. Facescreen does not require an account and contains no analytics or cloud-upload service.</p></details>
-        <details><summary>What recording formats are supported?<span>+</span></summary><p>Chrome currently creates WebM video files through its built-in MediaRecorder API. Snapshots are saved as PNG files.</p></details>
-        <details><summary>Can I record system audio?<span>+</span></summary><p>Yes, when Chrome and your operating system support audio for the source you select. Enable “Share audio” in Chrome's source picker when it is available.</p></details>
-      </div>
+    <section class="final-cta">
+      <div><h2>Ready when<br>you are.</h2><p>Put a focused recording control beside your work—not on top of it.</p></div>
+      <div class="cta-control"><span>Start with FaceScreen</span><a href="https://github.com/margemzp-ui/msrgems/releases/latest" aria-label="Download FaceScreen for Windows"><i></i><svg viewBox="0 0 24 24"><path d="M12 5v12m0 0 5-5m-5 5-5-5"/></svg></a></div>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-main"><a class="logo" href="#top"><span class="logo-mark">F</span><span>Facescreen <b>Recorder</b></span></a><p>Private recording, made refreshingly simple.</p><div><a href="#features">Features</a><a href="#privacy">Privacy</a><a href="https://github.com/mpdigitalsolution/facescreen" target="_blank" rel="noreferrer">GitHub ↗</a></div></div>
-    <div class="footer-bottom"><span>© <span id="year">2026</span> Facescreen Recorder</span><span>Made for people who value their privacy.</span></div>
-  </footer>
+  <footer><a class="brand" href="#top"><span class="brand-lens"><span></span></span><span>FaceScreen</span></a><p>Compact screen and webcam recording for Windows.</p><div><a href="https://github.com/margemzp-ui/msrgems" target="_blank" rel="noreferrer">GitHub</a><a href="#privacy">Privacy</a><a href="#top">Back to top ↑</a></div></footer>
+  <script src="landing.js"></script>
 </body>
 </html>
